@@ -1,160 +1,65 @@
-# Byte-compiled / optimized / DLL files
-__pycache__/
-*.py[cod]
-*$py.class
+# UNIVERSIDADE FEDERAL DO MARANHÃO (UFMA)
+# DISCIPLINA : ENGENHARIA DE SOFTWARE
+# Kely Souza da Silva
 
-# C extensions
-*.so
+def conversorTemperatura(opcao, graus):
+  if opcao == 1:
+      # Celsius para Fahrenheit: F = (C * 9/5) + 32
+      fahrenheit = (graus * 9/5) + 32
+      return fahrenheit
+  elif opcao == 2:
+      # Fahrenheit para Celsius: C = (F - 32) * 5/9
+      celsius = (graus - 32) * 5/9
+      return celsius
+  else:
+      return "Opção inválida. Escolha 1 para Celsius para Fahrenheit ou 2 para Fahrenheit para Celsius."
 
-# Distribution / packaging
-.Python
-build/
-develop-eggs/
-dist/
-downloads/
-eggs/
-.eggs/
-lib/
-lib64/
-parts/
-sdist/
-var/
-wheels/
-share/python-wheels/
-*.egg-info/
-.installed.cfg
-*.egg
-MANIFEST
+# Exemplos de uso
+# Convertendo 25 graus Celsius para Fahrenheit (opção 1)
+print("25 graus Celsius em Fahrenheit:", conversorTemperatura(1, 25))
 
-# PyInstaller
-#  Usually these files are written by a python script from a template
-#  before PyInstaller builds the exe, so as to inject date/other infos into it.
-*.manifest
-*.spec
+# Convertendo 77 graus Fahrenheit para Celsius (opção 2)
+print("77 graus Fahrenheit em Celsius:", conversorTemperatura(2, 77))
 
-# Installer logs
-pip-log.txt
-pip-delete-this-directory.txt
 
-# Unit test / coverage reports
-htmlcov/
-.tox/
-.nox/
-.coverage
-.coverage.*
-.cache
-nosetests.xml
-coverage.xml
-*.cover
-*.py,cover
-.hypothesis/
-.pytest_cache/
-cover/
+import unittest
 
-# Translations
-*.mo
-*.pot
+def conversorTemperatura(opcao, graus):
+    if opcao == 1:
+        # Celsius para Fahrenheit: F = (C * 9/5) + 32
+        fahrenheit = (graus * 9/5) + 32
+        return fahrenheit
+    elif opcao == 2:
+        # Fahrenheit para Celsius: C = (F - 32) * 5/9
+        celsius = (graus - 32) * 5/9
+        return celsius
+    else:
+        return "Opção inválida. Escolha 1 para Celsius para Fahrenheit ou 2 para Fahrenheit para Celsius."
 
-# Django stuff:
-*.log
-local_settings.py
-db.sqlite3
-db.sqlite3-journal
+class TestConversorTemperatura(unittest.TestCase):
 
-# Flask stuff:
-instance/
-.webassets-cache
+    # Teste para a conversão de Celsius para Fahrenheit
+    def test_celsius_para_fahrenheit(self):
+        self.assertEqual(conversorTemperatura(1, 25), 77)  # 25 graus Celsius é igual a 77 Fahrenheit
+        self.assertEqual(conversorTemperatura(1, -10), 14)  # -10 graus Celsius é igual a 14 Fahrenheit
 
-# Scrapy stuff:
-.scrapy
+    # Teste para a conversão de Fahrenheit para Celsius
+    def test_fahrenheit_para_celsius(self):
+        self.assertEqual(conversorTemperatura(2, 77), 25)  # 77 Fahrenheit é igual a 25 graus Celsius
+        self.assertEqual(conversorTemperatura(2, 32), 0)   # 32 Fahrenheit é igual a 0 graus Celsius
 
-# Sphinx documentation
-docs/_build/
+    # Teste para opção inválida
+    def test_opcao_invalida(self):
+        self.assertEqual(conversorTemperatura(3, 50), "Opção inválida. Escolha 1 para Celsius para Fahrenheit ou 2 para Fahrenheit para Celsius.")
 
-# PyBuilder
-.pybuilder/
-target/
+    # Teste para outra conversão de Celsius para Fahrenheit
+    def test_outro_celsius_para_fahrenheit(self):
+        self.assertEqual(conversorTemperatura(1, 100), 212)  # 100 graus Celsius é igual a 212 Fahrenheit
 
-# Jupyter Notebook
-.ipynb_checkpoints
+    # Teste para outra conversão de Fahrenheit para Celsius
+    def test_outro_fahrenheit_para_celsius(self):
+        self.assertEqual(conversorTemperatura(2, 50), 10)   # 50 Fahrenheit é igual a 10 graus Celsius
 
-# IPython
-profile_default/
-ipython_config.py
+if __name__ == "__main__":
+    unittest.main()
 
-# pyenv
-#   For a library or package, you might want to ignore these files since the code is
-#   intended to run in multiple environments; otherwise, check them in:
-# .python-version
-
-# pipenv
-#   According to pypa/pipenv#598, it is recommended to include Pipfile.lock in version control.
-#   However, in case of collaboration, if having platform-specific dependencies or dependencies
-#   having no cross-platform support, pipenv may install dependencies that don't work, or not
-#   install all needed dependencies.
-#Pipfile.lock
-
-# poetry
-#   Similar to Pipfile.lock, it is generally recommended to include poetry.lock in version control.
-#   This is especially recommended for binary packages to ensure reproducibility, and is more
-#   commonly ignored for libraries.
-#   https://python-poetry.org/docs/basic-usage/#commit-your-poetrylock-file-to-version-control
-#poetry.lock
-
-# pdm
-#   Similar to Pipfile.lock, it is generally recommended to include pdm.lock in version control.
-#pdm.lock
-#   pdm stores project-wide configurations in .pdm.toml, but it is recommended to not include it
-#   in version control.
-#   https://pdm.fming.dev/#use-with-ide
-.pdm.toml
-
-# PEP 582; used by e.g. github.com/David-OConnor/pyflow and github.com/pdm-project/pdm
-__pypackages__/
-
-# Celery stuff
-celerybeat-schedule
-celerybeat.pid
-
-# SageMath parsed files
-*.sage.py
-
-# Environments
-.env
-.venv
-env/
-venv/
-ENV/
-env.bak/
-venv.bak/
-
-# Spyder project settings
-.spyderproject
-.spyproject
-
-# Rope project settings
-.ropeproject
-
-# mkdocs documentation
-/site
-
-# mypy
-.mypy_cache/
-.dmypy.json
-dmypy.json
-
-# Pyre type checker
-.pyre/
-
-# pytype static type analyzer
-.pytype/
-
-# Cython debug symbols
-cython_debug/
-
-# PyCharm
-#  JetBrains specific template is maintained in a separate JetBrains.gitignore that can
-#  be found at https://github.com/github/gitignore/blob/main/Global/JetBrains.gitignore
-#  and can be added to the global gitignore or merged into this file.  For a more nuclear
-#  option (not recommended) you can uncomment the following to ignore the entire idea folder.
-#.idea/
