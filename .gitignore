@@ -2,6 +2,7 @@
 # DISCIPLINA : ENGENHARIA DE SOFTWARE
 # Kely Souza da Silva
 
+
 def conversorTemperatura(opcao, graus):
   if opcao == 1:
       # Celsius para Fahrenheit: F = (C * 9/5) + 32
